@@ -1,0 +1,11 @@
+DRY sampler: pi6am's KoboldCpp implementation, ported to llama.cpp.
+
+The original author pi6am explicitly permits its incorporation into llama.cpp
+under MIT in the upstream review:
+https://github.com/ggml-org/llama.cpp/pull/9702#discussion_r1805786189
+
+"I officially give permission to incorporate it into llama.cpp under the MIT license."
+
+The compiled source retains the author's and KoboldCpp's attribution. The MIT
+licence text is included with this component from llama.cpp's pinned LICENSE.
+The separately credited public-domain Z-algorithm adaptation has its own notice.

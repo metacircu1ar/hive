@@ -1,0 +1,78 @@
+{
+  "kind": "synthetic",
+  "product_version": null,
+  "fixtures": {
+    "provider": {
+      "path": "tests/fixtures/runtime_provider.py",
+      "sha256": "cf2123ab6313ceedb96e49754de481d8f6a1048ab794369ebbf5a100880ff609"
+    },
+    "provider_schema": {
+      "path": "tests/fixtures/codex-schema.json",
+      "sha256": "461d9b939e068849f4df7d57cf9fcd0db8bf5b169b3722290b32cf2dc0f788d8"
+    },
+    "provider_common": {
+      "path": "tests/fixtures/mock_common.py",
+      "sha256": "b5df1b7b58254456e9d90a3e35de20f047b740aa8319b89e3aa6890d4dc25958"
+    },
+    "publication": {
+      "path": "scripts/release/files.py",
+      "sha256": "94e5b79005f7cea47e2855b90a83ad8fa975d75e5e46d72825db1d0fd47a3dce"
+    },
+    "embeddings": {
+      "path": "tests/fixtures/compatibility_embeddings.py",
+      "sha256": "7c6bc14aa2c508d2296541c371a581320c013423b11d68f6e1e1d99c41622bba"
+    },
+    "transcripts": {
+      "path": "compat/synthetic-0/transcripts.json",
+      "sha256": "8bd8a4137faddbb5f841de8111b1e71a6c0ff1106e4e39036a5e94cfbac33e49"
+    },
+    "scenario": {
+      "path": "compat/synthetic-0/scenario.json",
+      "sha256": "1fc2449aa84d541416f618220f271e9d6f3222f1013a45ccfb363dde785d4c45"
+    },
+    "mock_codex_account": {
+      "path": "tests/fixtures/mock_codex_account.py",
+      "sha256": "ef31d0c098d0eec99e5d12e9d9647c1d7662d21d2660901533a3c84bbc019e66"
+    },
+    "mock_codex_bodies": {
+      "path": "tests/fixtures/mock_codex_bodies.py",
+      "sha256": "badda49c4a7c804e4c5eed6828b4e94bae696c9e5197ccb736a487ac175399f5"
+    },
+    "mock_codex_conversation": {
+      "path": "tests/fixtures/mock_codex_conversation.py",
+      "sha256": "c0ea7c9b65cd7e5ed05dee605911691abbfa0a9a9d1ac33cbc275898c01b978b"
+    },
+    "mock_codex_runtime": {
+      "path": "tests/fixtures/mock_codex_runtime.py",
+      "sha256": "28a18eec4bd2d3cb828599f09f4346ab6f099c648a11eedf220fe4fb11ef2969"
+    },
+    "mock_codex_threads": {
+      "path": "tests/fixtures/mock_codex_threads.py",
+      "sha256": "7803b866bd3fa5856d3d72dc6e9a1f2d5acb8282fcbc84ee48cebd4cea85f989"
+    },
+    "mock_codex_turns": {
+      "path": "tests/fixtures/mock_codex_turns.py",
+      "sha256": "1c1818a0bcc2dd3c931cda0288469cedec58e4954fbab0b2af191e6706fc160c"
+    },
+    "mock_codex_replies": {
+      "path": "tests/fixtures/mock_codex_replies.py",
+      "sha256": "4754654f9581583924b89a89841948177417dac5567e531b61cd7d1b7c2926b3"
+    }
+  },
+  "checks": [
+    "native_bindings",
+    "branch",
+    "attachments",
+    "artifacts",
+    "outbox_once",
+    "trust",
+    "receipts",
+    "credentials",
+    "text",
+    "vector",
+    "hybrid",
+    "graph",
+    "references",
+    "graph_diagnostics"
+  ]
+}

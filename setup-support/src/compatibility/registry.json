@@ -1,0 +1,28 @@
+[
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "maintenance",
+    "released": [
+      {
+        "fingerprint": "bda95a121750a9d7fc18f1c7ce468bf4fc476e191632d1030e213e7b0c6d9ce9",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  },
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "service",
+    "released": [
+      {
+        "fingerprint": "84fffaf7daf48c3d4002e1cf5fe1649db05ee60af8cae07e505425256414a216",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  }
+]

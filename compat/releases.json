@@ -1,0 +1,95 @@
+[
+  {
+    "corpus_sha256": "50f3e4e70e7506c0b8fe1209a641824de26d2ebd97b3fa8bc827f7c10d1b02e1",
+    "parts": {
+      "comb": {
+        "binaries": {
+          "comb": {
+            "member": "bin/comb",
+            "sha256": "d1b1a8a676d4cf5dd465d2156067e6f02f5e23b4c077d4b7a2f340ec2b7aa24f"
+          }
+        },
+        "sha256": "6f524d69bcf81347e0280d5f8f533b72d77ed27fc224e4d2170c72c187594551",
+        "url": "https://github.com/metacircu1ar/hive/releases/download/v0.1.0/comb-aarch64-apple-darwin.tar.gz"
+      },
+      "hive": {
+        "binaries": {
+          "hive-daemon": {
+            "member": "bin/hive-daemon",
+            "sha256": "4b49e06b320cfe89e0e11374c8e78c7ab9201e80e44000efb8ec1f799ae36ecb"
+          },
+          "hivectl": {
+            "member": "bin/hivectl",
+            "sha256": "58562b47b53cc4f5b564730a654167345868a7cdc9b8b49825839ccee9dbadf1"
+          }
+        },
+        "sha256": "6926fc4ccb37d36d7ce1e42b6ae3334e92a072f963d41ec09bdb15bd038c0481",
+        "url": "https://github.com/metacircu1ar/hive/releases/download/v0.1.0/hive-aarch64-apple-darwin.tar.gz"
+      }
+    },
+    "target": "aarch64-apple-darwin",
+    "version": "0.1.0"
+  },
+  {
+    "corpus_sha256": "50f3e4e70e7506c0b8fe1209a641824de26d2ebd97b3fa8bc827f7c10d1b02e1",
+    "parts": {
+      "comb": {
+        "binaries": {
+          "comb": {
+            "member": "bin/comb",
+            "sha256": "1f9a6b27072b086f8253b532336987b8a610adc3cef730ac298c008f22e47db3"
+          }
+        },
+        "sha256": "451beaec99fc76473a6ffb8b2f464bacb38bafdbe6d6216807814e3171c89683",
+        "url": "https://github.com/metacircu1ar/hive/releases/download/v0.1.0/comb-aarch64-unknown-linux-gnu.tar.gz"
+      },
+      "hive": {
+        "binaries": {
+          "hive-daemon": {
+            "member": "bin/hive-daemon",
+            "sha256": "1c175e55f0ada3543a33e532236164727dd201be2d0d5eb6a43f31ae9d9958de"
+          },
+          "hivectl": {
+            "member": "bin/hivectl",
+            "sha256": "4ad6b778d53016243251cf14ae2a11bf86b9777e1377226cdc9be2d3ed207d4b"
+          }
+        },
+        "sha256": "7eced9c41da4cd8a19c221f806f1ea559f28719d85d5794b408c349179b09c8b",
+        "url": "https://github.com/metacircu1ar/hive/releases/download/v0.1.0/hive-aarch64-unknown-linux-gnu.tar.gz"
+      }
+    },
+    "target": "aarch64-unknown-linux-gnu",
+    "version": "0.1.0"
+  },
+  {
+    "corpus_sha256": "50f3e4e70e7506c0b8fe1209a641824de26d2ebd97b3fa8bc827f7c10d1b02e1",
+    "parts": {
+      "comb": {
+        "binaries": {
+          "comb": {
+            "member": "bin/comb",
+            "sha256": "0b66e79a90cf76d3901112153fbb5f5888e665c2f9b0ecbddb4cf807813e60fe"
+          }
+        },
+        "sha256": "85668b0ab6700255df99a034a3204f7de8aa1385dcbd86cb9b976577c8ab46c0",
+        "url": "https://github.com/metacircu1ar/hive/releases/download/v0.1.0/comb-x86_64-unknown-linux-gnu.tar.gz"
+      },
+      "hive": {
+        "binaries": {
+          "hive-daemon": {
+            "member": "bin/hive-daemon",
+            "sha256": "b5293760a1c1e0c320a0b74cd53eaa7e0582474c79d81febe76c1dd274deb148"
+          },
+          "hivectl": {
+            "member": "bin/hivectl",
+            "sha256": "a38fad4b4b8e70ea358ac8a1cc149d0b1a88cb8835f227dc4cc4ab80c61efa73"
+          }
+        },
+        "sha256": "c40199e873f8a38890531c2ea689250900c480ce58f83efb0392a0ee7ec87894",
+        "url": "https://github.com/metacircu1ar/hive/releases/download/v0.1.0/hive-x86_64-unknown-linux-gnu.tar.gz"
+      }
+    },
+    "target": "x86_64-unknown-linux-gnu",
+    "version": "0.1.0"
+  }
+]

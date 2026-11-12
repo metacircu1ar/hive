@@ -1,0 +1,2 @@
+exit=0
+{"complete":true,"current_incomplete_sources":0,"generation":{"identity":"<generation>","revision":4},"incoming":false,"next_after":null,"references":[{"ordinary":["slug"],"ordinary_source_page_unverified":true,"page_unverified":true,"slug":"concepts/target","typed":[]}],"slug":"concepts/page"}

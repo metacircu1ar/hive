@@ -1,0 +1,54 @@
+[
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "root",
+    "released": [
+      {
+        "fingerprint": "ad669ffb02cc28b9843648ad13fe5d1da938c4fae87d02ad3db7e6282ab93449",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  },
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "seal",
+    "released": [
+      {
+        "fingerprint": "e676841a8a9b20657e54db045fabed6dd9cc3bdade5bacfee8218bc70dd7c9c4",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  },
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "index",
+    "released": [
+      {
+        "fingerprint": "c2b6d0065bd3dcb7d441cdfca03dae62708fba53d46410e05f0dc870f68a0151",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  },
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "vectors",
+    "released": [
+      {
+        "fingerprint": "134da166146e773dec65118bb7615a7ec3807c74ad072abae330719f21b6f878",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  }
+]

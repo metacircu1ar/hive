@@ -1,0 +1,152 @@
+[
+  [
+    "index",
+    "aliases_lookup",
+    "CREATE INDEX aliases_lookup ON aliases(alias,slug)"
+  ],
+  [
+    "index",
+    "backlinks_lookup",
+    "CREATE INDEX backlinks_lookup ON links(target,source)"
+  ],
+  [
+    "index",
+    "chunks_input_hash",
+    "CREATE INDEX chunks_input_hash ON chunks(input_hash)"
+  ],
+  [
+    "index",
+    "relation_coverage_current",
+    "CREATE INDEX relation_coverage_current ON relation_coverage(current_incomplete,source)"
+  ],
+  [
+    "index",
+    "relation_coverage_totals",
+    "CREATE INDEX relation_coverage_totals ON relation_coverage(current_count,historical_count,historical_incomplete)"
+  ],
+  [
+    "index",
+    "relation_incoming",
+    "CREATE INDEX relation_incoming ON relation_occurrences(target,zone,predicate,source)"
+  ],
+  [
+    "index",
+    "relation_outgoing",
+    "CREATE INDEX relation_outgoing ON relation_occurrences(source,zone,predicate,target)"
+  ],
+  [
+    "index",
+    "tags_lookup",
+    "CREATE INDEX tags_lookup ON tags(tag,slug)"
+  ],
+  [
+    "table",
+    "aliases",
+    "CREATE TABLE aliases (slug TEXT NOT NULL REFERENCES pages(slug) ON DELETE CASCADE, alias TEXT NOT NULL, PRIMARY KEY(slug,alias))"
+  ],
+  [
+    "table",
+    "chunk_fts",
+    "CREATE VIRTUAL TABLE chunk_fts USING fts5(title,heading,text,slug UNINDEXED,content='',contentless_delete=1,tokenize='unicode61')"
+  ],
+  [
+    "table",
+    "chunk_fts_config",
+    "CREATE TABLE 'chunk_fts_config'(k PRIMARY KEY, v) WITHOUT ROWID"
+  ],
+  [
+    "table",
+    "chunk_fts_data",
+    "CREATE TABLE 'chunk_fts_data'(id INTEGER PRIMARY KEY, block BLOB)"
+  ],
+  [
+    "table",
+    "chunk_fts_docsize",
+    "CREATE TABLE 'chunk_fts_docsize'(id INTEGER PRIMARY KEY, sz BLOB, origin INTEGER)"
+  ],
+  [
+    "table",
+    "chunk_fts_idx",
+    "CREATE TABLE 'chunk_fts_idx'(segid, term, pgno, PRIMARY KEY(segid, term)) WITHOUT ROWID"
+  ],
+  [
+    "table",
+    "chunks",
+    "CREATE TABLE chunks (\n id INTEGER PRIMARY KEY, slug TEXT NOT NULL REFERENCES pages(slug) ON DELETE CASCADE,\n ordinal INTEGER NOT NULL, zone TEXT NOT NULL, heading TEXT NOT NULL,\n text TEXT NOT NULL, verified INTEGER NOT NULL, input_hash TEXT NOT NULL, instance TEXT NOT NULL,\n UNIQUE(slug,ordinal)\n)"
+  ],
+  [
+    "table",
+    "embedding_failures",
+    "CREATE TABLE embedding_failures (chunk_id INTEGER PRIMARY KEY REFERENCES chunks(id) ON DELETE CASCADE, fingerprint TEXT NOT NULL, error TEXT NOT NULL)"
+  ],
+  [
+    "table",
+    "embedding_space",
+    "CREATE TABLE embedding_space (singleton INTEGER PRIMARY KEY CHECK(singleton=1), fingerprint TEXT NOT NULL, activation TEXT NOT NULL, specification TEXT NOT NULL)"
+  ],
+  [
+    "table",
+    "identity_fts",
+    "CREATE VIRTUAL TABLE identity_fts USING fts5(slug,title,aliases,tokenize='trigram')"
+  ],
+  [
+    "table",
+    "identity_fts_config",
+    "CREATE TABLE 'identity_fts_config'(k PRIMARY KEY, v) WITHOUT ROWID"
+  ],
+  [
+    "table",
+    "identity_fts_content",
+    "CREATE TABLE 'identity_fts_content'(id INTEGER PRIMARY KEY, c0, c1, c2)"
+  ],
+  [
+    "table",
+    "identity_fts_data",
+    "CREATE TABLE 'identity_fts_data'(id INTEGER PRIMARY KEY, block BLOB)"
+  ],
+  [
+    "table",
+    "identity_fts_docsize",
+    "CREATE TABLE 'identity_fts_docsize'(id INTEGER PRIMARY KEY, sz BLOB)"
+  ],
+  [
+    "table",
+    "identity_fts_idx",
+    "CREATE TABLE 'identity_fts_idx'(segid, term, pgno, PRIMARY KEY(segid, term)) WITHOUT ROWID"
+  ],
+  [
+    "table",
+    "index_generation",
+    "CREATE TABLE index_generation (\n singleton INTEGER PRIMARY KEY CHECK(singleton=1), identity TEXT NOT NULL,\n revision INTEGER NOT NULL CHECK(typeof(revision)='integer' AND revision>=0)\n)"
+  ],
+  [
+    "table",
+    "links",
+    "CREATE TABLE links (source TEXT NOT NULL REFERENCES pages(slug) ON DELETE CASCADE, target TEXT NOT NULL, kind TEXT NOT NULL CHECK(kind IN ('markdown','slug')), PRIMARY KEY(source,target,kind))"
+  ],
+  [
+    "table",
+    "pages",
+    "CREATE TABLE pages (\n slug TEXT PRIMARY KEY, title TEXT NOT NULL, title_key TEXT NOT NULL, kind TEXT NOT NULL,\n content_hash TEXT NOT NULL, verified INTEGER NOT NULL, external INTEGER NOT NULL,\n updated_at TEXT NOT NULL, compiled TEXT NOT NULL, page_json TEXT NOT NULL,\n inbox_pending INTEGER NOT NULL CHECK(inbox_pending IN (0,1)),\n unresolved_proposal INTEGER NOT NULL CHECK(unresolved_proposal IN (0,1))\n)"
+  ],
+  [
+    "table",
+    "quarantined_pages",
+    "CREATE TABLE quarantined_pages (slug TEXT PRIMARY KEY, code TEXT NOT NULL)"
+  ],
+  [
+    "table",
+    "relation_coverage",
+    "CREATE TABLE relation_coverage (\n source TEXT PRIMARY KEY REFERENCES pages(slug) ON DELETE CASCADE,\n extraction INTEGER NOT NULL CHECK(extraction=1),\n current_count INTEGER NOT NULL, historical_count INTEGER NOT NULL,\n current_incomplete INTEGER NOT NULL CHECK(current_incomplete IN (0,1)),\n historical_incomplete INTEGER NOT NULL CHECK(historical_incomplete IN (0,1)),\n diagnostics TEXT NOT NULL, diagnostics_omitted INTEGER NOT NULL\n)"
+  ],
+  [
+    "table",
+    "relation_occurrences",
+    "CREATE TABLE relation_occurrences (\n source TEXT NOT NULL REFERENCES pages(slug) ON DELETE CASCADE,\n ordinal INTEGER NOT NULL, content_hash TEXT NOT NULL,\n zone TEXT NOT NULL CHECK(zone IN ('compiled','timeline')), entry TEXT,\n start INTEGER NOT NULL CHECK(start>=0), end INTEGER NOT NULL CHECK(end>start),\n predicate TEXT NOT NULL CHECK(predicate IN ('depends_on','implements','owned_by','related_to')),\n target TEXT NOT NULL, verified INTEGER NOT NULL CHECK(verified IN (0,1)),\n evidence_refs TEXT NOT NULL,\n references_complete INTEGER NOT NULL CHECK(references_complete IN (0,1)),\n CHECK((zone='compiled' AND entry IS NULL) OR (zone='timeline' AND entry IS NOT NULL)),\n PRIMARY KEY(source,ordinal)\n)"
+  ],
+  [
+    "table",
+    "tags",
+    "CREATE TABLE tags (slug TEXT NOT NULL REFERENCES pages(slug) ON DELETE CASCADE, tag TEXT NOT NULL, PRIMARY KEY(slug,tag))"
+  ]
+]

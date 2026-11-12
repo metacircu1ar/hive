@@ -1,0 +1,437 @@
+{
+  "binaries": {
+    "comb-llama-server": {
+      "bytes": 18356224,
+      "dependencies": {
+        "libraries": [
+          "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+          "/usr/lib/libSystem.B.dylib",
+          "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+          "/System/Library/Frameworks/Metal.framework/Versions/A/Metal",
+          "/System/Library/Frameworks/MetalKit.framework/Versions/A/MetalKit",
+          "/usr/lib/libc++.1.dylib",
+          "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+          "/usr/lib/libobjc.A.dylib"
+        ],
+        "required_glibc": null,
+        "required_macos": "13.3.0"
+      },
+      "product_version": "0.1.0",
+      "sha256": "177842ac97380d801272eecc1001994a1b5fdfbaa217009f9d008c60f670d5fa",
+      "version": "version: 0.6.0-dev (build 1, commit d812350)"
+    }
+  },
+  "build_seconds": 90.15313866597717,
+  "clean": true,
+  "command": [
+    "cmake",
+    "--build",
+    "BUILD",
+    "--config",
+    "Release",
+    "--target",
+    "llama-server"
+  ],
+  "dependencies": [
+    {
+      "license": "MIT",
+      "name": "llama.cpp and ggml",
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT",
+      "name": "DRY sampler port",
+      "notices": [
+        {
+          "file": "src/llama-sampler.cpp",
+          "sha256": "b40cfaa2337575f9c68c6a291435b20f2d07bc4705484867946680b50db05660"
+        },
+        {
+          "file": "include/llama.h",
+          "sha256": "c9a5f025ad7dbf07eda6660c8ff2c32cd80c07ba440d80728707a9c9d13c1bc3"
+        },
+        {
+          "file": "LICENSE",
+          "sha256": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d"
+        },
+        {
+          "file": "scripts/release/notices/dry-permission.txt",
+          "sha256": "ae04a0f54ec55397810b83d7685372169c7ef3fd414674f0c4292d4d255b399c"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT",
+      "name": "DeepSeek image preprocessor port",
+      "notices": [
+        {
+          "file": "tools/mtmd/mtmd-image.cpp",
+          "sha256": "83d61f416c6681ee44a2db7dc2972c87caee24e318b4380af53e704b8ba359d5"
+        },
+        {
+          "file": "scripts/release/notices/deepseek.txt",
+          "sha256": "f2c6c602815669d292889e5be8c802f2ed950653b77999b1584e8e6aed25d040"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "Apache-2.0",
+      "name": "OpenVINO SVE adaptation",
+      "notices": [
+        {
+          "file": "ggml/src/ggml-cpu/vec.h",
+          "sha256": "885a50e405f20f75ea70cb7fb062934812beffc9229ddb56a003aa150163d2fa"
+        },
+        {
+          "file": "scripts/release/notices/openvino.txt",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "file": "scripts/release/notices/openvino-attribution.txt",
+          "sha256": "b695b1d666ec6ad87a8df34984a7e538f7388181cd4ae25f4967120bb5cb5dbd"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT",
+      "name": "ggllm.cpp tokenizer adaptation",
+      "notices": [
+        {
+          "file": "src/llama-vocab.cpp",
+          "sha256": "18f624c7f5a64f6bd4458248d2cde0ba989cbd46c47b8007be1765e31486c938"
+        },
+        {
+          "file": "scripts/release/notices/ggllm.txt",
+          "sha256": "03871befb92d000a22dd5d5fe89381afe4ae461a219d2d4f79912dfdb5e56a23"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT",
+      "name": "Arm optimized-routines adaptation",
+      "notices": [
+        {
+          "file": "ggml/src/ggml-cpu/vec.h",
+          "sha256": "885a50e405f20f75ea70cb7fb062934812beffc9229ddb56a003aa150163d2fa"
+        },
+        {
+          "file": "scripts/release/notices/arm-optimized-routines.txt",
+          "sha256": "650afbf29f214451e02241adc42534e82c9d6ae2b38e2444b92b5a1ffcaf9346"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT-CMU",
+      "name": "Pillow resampling adaptation",
+      "notices": [
+        {
+          "file": "tools/mtmd/mtmd-image.cpp",
+          "sha256": "83d61f416c6681ee44a2db7dc2972c87caee24e318b4380af53e704b8ba359d5"
+        },
+        {
+          "file": "scripts/release/notices/pillow.txt",
+          "sha256": "15181e7363dca9aed78b79bebebc7fde7f1814b8bd311ea3b87ae8ccadfc185b"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT AND LicenseRef-Public-Domain",
+      "name": "public-domain Z-algorithm adaptation",
+      "notices": [
+        {
+          "file": "src/llama-sampler.cpp",
+          "sha256": "b40cfaa2337575f9c68c6a291435b20f2d07bc4705484867946680b50db05660"
+        },
+        {
+          "file": "LICENSE",
+          "sha256": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "Unlicense",
+      "name": "public-domain base64",
+      "notices": [
+        {
+          "file": "common/base64.hpp",
+          "sha256": "57f595aa0a206c4dec9a84b90a3416028a242da4dd8f219afc0859a6ccb7efe7"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT",
+      "name": "llamafile sgemm",
+      "notices": [
+        {
+          "file": "ggml/src/ggml-cpu/llamafile/sgemm.cpp",
+          "sha256": "8413c9a0828ddea7289aee72a32c03bd56a23ee40179ec3600f9b0589a21e338"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT",
+      "name": "YaRN",
+      "notices": [
+        {
+          "file": "ggml/src/ggml-cpu/ops.cpp",
+          "sha256": "215d16e7ebbb4066920e2d7a5f7ea6c46636d298aedd553e00f0b3ebb0d59305"
+        },
+        {
+          "file": "ggml/src/ggml-metal/kernels/rope.metal",
+          "sha256": "ec29ea430182842124c9bc7e62e1f8a2f48e1afc51d2ded54b96911201588987"
+        },
+        {
+          "file": "LICENSE",
+          "sha256": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT",
+      "name": "cpp-httplib",
+      "notices": [
+        {
+          "file": "vendor/cpp-httplib/LICENSE",
+          "sha256": "4b45cbe16d7b71b89ae6127e26e0d90a029198ca5e958ad8e3d0b8bbed364d8b"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT",
+      "name": "nlohmann/json",
+      "notices": [
+        {
+          "file": "licenses/LICENSE-jsonhpp",
+          "sha256": "c0d068392ea65358b798b8c165103560f06e9e3b38c4ab4e2d8810a7b931af86"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT AND BSD-2-Clause AND LicenseRef-Public-Domain",
+      "name": "hash helpers",
+      "notices": [
+        {
+          "file": "vendor/hash/rotate-bits/LICENSE.md",
+          "sha256": "ca0b44aec101afb6b46f4c39b23369fa06a64fb9c0add37c2689d702156fee55"
+        },
+        {
+          "file": "vendor/hash/sha1/sha1.c",
+          "sha256": "6de78afb7c2e54ccbd742c0307015db4dceaa64d85533709f99de05074d639e4"
+        },
+        {
+          "file": "vendor/hash/sha256/LICENSE",
+          "sha256": "b81d0022ca6367918c67b57e9647d3513ee58809fd4b0ef0b3492f1356bced25"
+        },
+        {
+          "file": "vendor/hash/xxhash/LICENSE",
+          "sha256": "6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT OR Unlicense",
+      "name": "stb_image",
+      "notices": [
+        {
+          "file": "vendor/stb/stb_image.h",
+          "sha256": "594c2fe35d49488b4382dbfaec8f98366defca819d916ac95becf3e75f4200b3"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    },
+    {
+      "license": "MIT-0 OR Unlicense",
+      "name": "miniaudio",
+      "notices": [
+        {
+          "file": "vendor/miniaudio/miniaudio.h",
+          "sha256": "ac7af4de748b7e26b777f37e01cee313a308a7296a3eb080e2906b320cc55c89"
+        }
+      ],
+      "version": "d81235049384534c167caea52b85a694f6103d14"
+    }
+  ],
+  "environment": {
+    "build_jobs": 4,
+    "incremental": false,
+    "macos_deployment_target": "13.3",
+    "term_color": "never"
+  },
+  "inputs": {
+    "README.md": {
+      "bytes": 24233,
+      "mode": 420,
+      "sha256": "af6d081db69947b809b560c4da8af3cad637ba57441abea6a21b366144773a80"
+    },
+    "comb/README.md": {
+      "bytes": 77368,
+      "mode": 420,
+      "sha256": "e4048a2bd7e636da77cdb219d1b1ab24762174eec952c611b0291766731a1849"
+    },
+    "comb/logo.png": {
+      "bytes": 430248,
+      "mode": 420,
+      "sha256": "41caa38b91ddba8b3e683e9f9a901efc36a65fd36f0d459a6a15456a0fc8527c"
+    },
+    "docs/cli-reference.md": {
+      "bytes": 166894,
+      "mode": 420,
+      "sha256": "d2cb2a4c01d2240d5cb8692ffdd94494510af94dbf7a875bea2a6f1a71cbaddc"
+    },
+    "docs/compatibility.md": {
+      "bytes": 10756,
+      "mode": 420,
+      "sha256": "e839faece5fea1a635e9f9326955c420e49c1127b34381e513b86b8eb9da1b0f"
+    },
+    "docs/platforms-and-installation.md": {
+      "bytes": 12933,
+      "mode": 420,
+      "sha256": "f6030627bd5af8341dd54ec2fa62ca09d2340fda39f071dda97bcc1b671bfc2d"
+    },
+    "docs/setup.md": {
+      "bytes": 33719,
+      "mode": 420,
+      "sha256": "0b1bc4bffc6239f9cc2a80056bf0b0d0adc86aef6174c61515187ba1ba54e799"
+    },
+    "docs/terminal.md": {
+      "bytes": 23269,
+      "mode": 420,
+      "sha256": "ace090a7706818fc989d98c9967539d589be807eb5ddc9099c719c8d19fcb5c6"
+    },
+    "examples/auth.yaml": {
+      "bytes": 1282,
+      "mode": 420,
+      "sha256": "7d8be72c5003021b4540ed3e6bfb0d1206d2294f6687c6ea3ca72f16a8593973"
+    },
+    "examples/comb-bootstrap.md": {
+      "bytes": 882,
+      "mode": 420,
+      "sha256": "aa5a56a5855076054bd704b94a173bece5c9aa4a40bc3356a6d52cbf356dea00"
+    },
+    "examples/comb-curate.md": {
+      "bytes": 533,
+      "mode": 420,
+      "sha256": "f968f79904441af0cc1778bb24f76e20528d5bb43b1b2e769b880c8d53f96bf8"
+    },
+    "examples/comb-maintain.md": {
+      "bytes": 877,
+      "mode": 420,
+      "sha256": "88212c90c008898d9c271be3e82a96bf6991a4381ba19c330f171fbc21c1270c"
+    },
+    "examples/comb.yaml": {
+      "bytes": 775,
+      "mode": 420,
+      "sha256": "66888c81931ab9891b9d8ded9787615f6d2cc9d0b65820f0ffe92d76ea5e9445"
+    },
+    "examples/qwen3-embedding.json": {
+      "bytes": 384,
+      "mode": 420,
+      "sha256": "394220253ea9f0b45e8df6d24d3d9f0f3057a6b5913bdc3ab0b2143d3e810932"
+    },
+    "logo.png": {
+      "bytes": 541487,
+      "mode": 420,
+      "sha256": "32ea7b91e53df91655118b0651d0016b4663eaec99f4cb093f97e0d8c8fb9848"
+    },
+    "packaging/install.sh": {
+      "bytes": 10550,
+      "mode": 493,
+      "sha256": "6899501c49543b44cb510d1b06b8f34af0db72e94a8ecdf1876490f09e48ed64"
+    },
+    "skills/comb-curator/SKILL.md": {
+      "bytes": 7952,
+      "mode": 420,
+      "sha256": "541020593404a82f0f1613e86f1341192d125b70f4a8b50ae7f2b762e478060d"
+    },
+    "skills/hive/SKILL.md": {
+      "bytes": 20344,
+      "mode": 420,
+      "sha256": "6c350b3bb316b89abc06a68b032ac67bdb0bc0ea94e6fd139d5378b56d6d84fa"
+    }
+  },
+  "llama": {
+    "cmake": "cmake version 4.4.3",
+    "cmake_options": {
+      "BUILD_SHARED_LIBS": "OFF",
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_FLAGS": "",
+      "CMAKE_C_FLAGS": "",
+      "CMAKE_EXE_LINKER_FLAGS": "",
+      "CMAKE_OSX_ARCHITECTURES": "arm64",
+      "CMAKE_OSX_DEPLOYMENT_TARGET": "13.3",
+      "GGML_ACCELERATE": "ON",
+      "GGML_BACKEND_DL": "OFF",
+      "GGML_BLAS": "ON",
+      "GGML_BLAS_VENDOR": "Apple",
+      "GGML_CANN": "OFF",
+      "GGML_CCACHE": "OFF",
+      "GGML_CPU_ALL_VARIANTS": "OFF",
+      "GGML_CPU_KLEIDIAI": "OFF",
+      "GGML_CUDA": "OFF",
+      "GGML_HIP": "OFF",
+      "GGML_LLAMAFILE": "ON",
+      "GGML_METAL": "ON",
+      "GGML_METAL_EMBED_LIBRARY": "ON",
+      "GGML_MUSA": "OFF",
+      "GGML_NATIVE": "OFF",
+      "GGML_OPENCL": "OFF",
+      "GGML_OPENMP": "OFF",
+      "GGML_OPENMP_FETCH": "OFF",
+      "GGML_RPC": "OFF",
+      "GGML_SYCL": "OFF",
+      "GGML_VULKAN": "OFF",
+      "GGML_WEBGPU": "OFF",
+      "GGML_ZDNN": "OFF",
+      "LLAMA_BUILD_APP": "OFF",
+      "LLAMA_BUILD_BORINGSSL": "OFF",
+      "LLAMA_BUILD_COMMON": "ON",
+      "LLAMA_BUILD_EXAMPLES": "OFF",
+      "LLAMA_BUILD_LIBRESSL": "OFF",
+      "LLAMA_BUILD_SERVER": "ON",
+      "LLAMA_BUILD_TESTS": "OFF",
+      "LLAMA_BUILD_TOOLS": "ON",
+      "LLAMA_BUILD_UI": "OFF",
+      "LLAMA_LLGUIDANCE": "OFF",
+      "LLAMA_OPENSSL": "OFF",
+      "LLAMA_SUBPROCESS": "OFF",
+      "LLAMA_USE_PREBUILT_UI": "OFF",
+      "MTMD_VIDEO": "OFF"
+    },
+    "commit": "d81235049384534c167caea52b85a694f6103d14",
+    "compiler": {
+      "c": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+      "cxx": "Apple clang version 21.0.0 (clang-2100.3.34.2)"
+    },
+    "repository": "https://github.com/ggml-org/llama.cpp.git",
+    "tree": "a47b4d437e9769fc34c0116371412b5af5de67d1"
+  },
+  "notices_bytes": 85606,
+  "notices_sha256": "ea3793f5bcb0d7d0b63a7fac8231a193a69f1b63f88a4b86727d39ebb82601c3",
+  "part": "comb-llama",
+  "profile": "release",
+  "source": {
+    "commit": "8876fc37d06b2ad0d56a9bd5f2593e4ced853f35",
+    "dirty": false,
+    "tree_sha256": "aeab6902e7b72bb5f153f2054e7009c4e243705df13ad728ea857ef46ea48ca8"
+  },
+  "target": "aarch64-apple-darwin"
+}

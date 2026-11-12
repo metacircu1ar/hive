@@ -1,0 +1,182 @@
+{
+  "control": [
+    {
+      "request": {
+        "protocol": 1,
+        "id": "corpus-list",
+        "args": {
+          "op": "agents"
+        }
+      },
+      "expect": {
+        "/agents": []
+      }
+    },
+    {
+      "request": {
+        "protocol": 4294967295,
+        "id": "corpus-skew",
+        "args": {
+          "op": "spawn",
+          "role": "implementor",
+          "body": "must not run"
+        }
+      },
+      "expect": {
+        "/error/code": "incompatible_protocol"
+      }
+    },
+    {
+      "request": {
+        "id": "corpus-missing",
+        "args": {
+          "op": "agents"
+        }
+      },
+      "expect": {
+        "/error/code": "invalid_request"
+      }
+    }
+  ],
+  "service": [
+    {
+      "protocol": 1,
+      "operation": {
+        "op": "capabilities"
+      },
+      "expect": {
+        "/status": "ok",
+        "/result/protocols": {
+          "minimum": 1,
+          "maximum": 1
+        }
+      }
+    },
+    {
+      "protocol": 4294967295,
+      "operation": {
+        "op": "capture",
+        "text": "must not persist",
+        "request_id": "corpus-skew"
+      },
+      "expect": {
+        "/status": "error",
+        "/error/code": "incompatible_protocol"
+      }
+    },
+    {
+      "protocol": 1,
+      "operation": {
+        "op": "graph_query",
+        "request": {
+          "anchor": "concepts/compat",
+          "predicates": [
+            "depends_on"
+          ],
+          "to": "concepts/typed-target"
+        }
+      },
+      "expect": {
+        "/status": "ok",
+        "/result/complete": true,
+        "/result/connection/shortest": true,
+        "/result/connection/unverified": true,
+        "/result/connection/nodes": [
+          "concepts/compat",
+          "concepts/unverified",
+          "concepts/typed-target"
+        ]
+      }
+    },
+    {
+      "protocol": 1,
+      "operation": {
+        "op": "links",
+        "slug": "concepts/typed-target",
+        "incoming": true
+      },
+      "expect": {
+        "/status": "ok",
+        "/result/complete": true,
+        "/result/references/0/slug": "concepts/unverified",
+        "/result/references/0/ordinary": [],
+        "/result/references/0/typed/0/predicate": "depends_on",
+        "/result/references/0/typed/0/unverified": true
+      }
+    }
+  ],
+  "mcp": [
+    {
+      "offer": "2024-11-05",
+      "selected": "2025-11-25"
+    },
+    {
+      "offer": "2025-11-25",
+      "selected": "2025-11-25"
+    },
+    {
+      "offer": "2099-01-01",
+      "selected": "2025-11-25"
+    }
+  ],
+  "tools": [
+    {
+      "tool": "comb_graph_query",
+      "arguments": {
+        "anchor": "concepts/compat",
+        "predicates": [
+          "depends_on"
+        ],
+        "to": "concepts/typed-target"
+      },
+      "expect": {
+        "/complete": true,
+        "/connection/shortest": true,
+        "/connection/unverified": true,
+        "/connection/nodes": [
+          "concepts/compat",
+          "concepts/unverified",
+          "concepts/typed-target"
+        ]
+      }
+    },
+    {
+      "tool": "comb_backlinks",
+      "arguments": {
+        "slug": "concepts/typed-target"
+      },
+      "expect": {
+        "/complete": true,
+        "/references/0/slug": "concepts/unverified",
+        "/references/0/ordinary": [],
+        "/references/0/typed/0/predicate": "depends_on",
+        "/references/0/typed/0/unverified": true
+      }
+    },
+    {
+      "tool": "comb_search",
+      "arguments": {
+        "query": "unmatched-query",
+        "mode": "text",
+        "graph": {
+          "anchor": "concepts/compat",
+          "predicates": [
+            "depends_on"
+          ],
+          "to": "concepts/typed-target"
+        }
+      },
+      "expect": {
+        "/mode": "text",
+        "/fallback": null,
+        "/graph/complete": true,
+        "/graph/connection/nodes": [
+          "concepts/compat",
+          "concepts/unverified",
+          "concepts/typed-target"
+        ],
+        "/results/0/create_safety": "unknown"
+      }
+    }
+  ]
+}

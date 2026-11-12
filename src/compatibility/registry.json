@@ -1,0 +1,80 @@
+[
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "state",
+    "released": [
+      {
+        "fingerprint": "9c501bef9c7f7096a6c51f47d073527fd97d04b6d1641a4d727425a470390bf1",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  },
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "collector",
+    "released": [
+      {
+        "fingerprint": "bfaa8c1d7ddf988855254f748d66bd424f05528a4a7cc5cace04fd0f341dafd0",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  },
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "controller_export",
+    "released": [
+      {
+        "fingerprint": "be049fa30c3c9d4f1da820300c53edf260be6f08bcc7ca3639ce7953b75f28a3",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  },
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "control_protocol",
+    "released": [
+      {
+        "fingerprint": "75c79c51d74c978786e023be9e27a224f456739b40abf806ce246ef1e95f6bb9",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  },
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "agent_catalog",
+    "released": [
+      {
+        "fingerprint": "e72f7d92f643190d1d3f021876bb94f8903bf575e1af0924c13a7d178fb2ca14",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  },
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "shell_protocol",
+    "released": [
+      {
+        "fingerprint": "b7f35d9daff4bed6b351e83d1ebd9213bbe7594aa04b2591beb2216f37539bc7",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  }
+]

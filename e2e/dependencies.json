@@ -1,0 +1,40 @@
+{
+  "ubuntu": {
+    "22.04": {
+      "codename": "jammy",
+      "release": "20260926",
+      "arm64": {
+        "sha256": "04f2ca6af841918df1fa1aaba485f2b5f3d451f90459e48c066bbd70ebed174f",
+        "bytes": 705299456
+      },
+      "amd64": {
+        "sha256": "0c9811a81e6329acacbb5ae4e701a7650f85cd3f19852cd159d79ab8357b210e",
+        "bytes": 735731200
+      }
+    },
+    "24.04": {
+      "codename": "noble",
+      "release": "20260926",
+      "arm64": {
+        "sha256": "1d6bffe64b848468ac97f821d369a4846d983de1800ccf6b5ec8853e85cefc55",
+        "bytes": 620224512
+      },
+      "amd64": {
+        "sha256": "6a81c37564db9b1ee84e141922625e1d7c5b389b99bb3c572e0243607d5bb4d2",
+        "bytes": 625612288
+      }
+    },
+    "26.04": {
+      "codename": "resolute",
+      "release": "20260927",
+      "arm64": {
+        "sha256": "63a93bd5a8d76e33b15ceb5daa3657bd79be804748051ab178e643b0f5da22e7",
+        "bytes": 945530880
+      },
+      "amd64": {
+        "sha256": "8800651811af9a85465ad1d552add729947bb16488dddb4a9b5305a3d97332b2",
+        "bytes": 865115136
+      }
+    }
+  }
+}

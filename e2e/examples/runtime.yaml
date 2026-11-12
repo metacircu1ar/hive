@@ -1,0 +1,33 @@
+auth_profiles:
+  codex-main:
+    provider: codex
+    method: subscription
+roles:
+  implementor:
+    auth: codex-main
+    model: gpt-6.1-terra
+    effort: medium
+    instructions: roles/implementor.md
+    lifetime: independent
+    sandbox: workspace-write
+  reviewer:
+    auth: codex-main
+    model: gpt-6.1-terra
+    effort: medium
+    instructions: roles/reviewer.md
+    lifetime: with_parent
+    sandbox: read-only
+  commit-implementor:
+    auth: codex-main
+    model: gpt-6.1-terra
+    effort: medium
+    instructions: roles/commit-implementor.md
+    lifetime: independent
+    sandbox: workspace-write
+  commit-reviewer:
+    auth: codex-main
+    model: gpt-6.1-terra
+    effort: low
+    instructions: roles/commit-reviewer.md
+    lifetime: independent
+    sandbox: read-only

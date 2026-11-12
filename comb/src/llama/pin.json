@@ -1,0 +1,15 @@
+{
+  "llama_cpp": {
+    "repository": "https://github.com/ggml-org/llama.cpp.git",
+    "commit": "d81235049384534c167caea52b85a694f6103d14",
+    "tree": "a47b4d437e9769fc34c0116371412b5af5de67d1"
+  },
+  "model": {
+    "repository": "Qwen/Qwen3-Embedding-8B-GGUF",
+    "revision": "69d0e58a13e463cd99a9b83e3f5fee7c10265fab",
+    "file": "Qwen3-Embedding-8B-Q8_0.gguf",
+    "sha256": "d20ddc71e8a5c4344f2343481e242233a997dc5eaff442427a945836c97b4deb",
+    "bytes": 8047105824,
+    "license": "Apache-2.0"
+  }
+}

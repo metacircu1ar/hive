@@ -1,0 +1,28 @@
+[
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "connection",
+    "released": [
+      {
+        "fingerprint": "2326c35b7442f7d784ddc3b1abfabb8275615293fac787bf859bce5eba3a33b9",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  },
+  {
+    "current": 1,
+    "maximum": 1,
+    "minimum": 1,
+    "name": "service_protocol",
+    "released": [
+      {
+        "fingerprint": "eca2cb910ba2387b1b3600c79c3da6a5b928de69a62f95d6a07c2f1f566b65cc",
+        "number": 1,
+        "product_version": "0.1.0"
+      }
+    ]
+  }
+]
