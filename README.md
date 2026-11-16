@@ -4,6 +4,21 @@
 
 <h1 align="center">Hive</h1>
 
+**Hive runs Claude and Codex agents as a team that persists.** Agents delegate work to
+each other, review each other's changes, ask you when they need a decision, and pick up
+where they stopped after a restart. One local daemon, one CLI, MIT.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/metacircu1ar/hive/main/docs/demo.gif" alt="hivectl tui running a lead agent, two Codex workers and a Claude reviewer" width="960">
+</p>
+
+*A lead agent splits a task between two Codex workers, sends their combined change to a
+read-only Claude reviewer, then asks you before writing the changelog
+([shop-team example](https://github.com/metacircu1ar/hive/blob/main/e2e/examples/shop-team/coordinator.md), 2× speed).*
+
+[Quick start](#quick-start) · [Why Hive](#why-hive) · [CLI reference](docs/cli-reference.md) ·
+follow new versions with **Watch → Custom → Releases**
+
 Hive runs Codex and Claude agents as persistent, separately addressable
 conversations. A local daemon owns provider processes, schedules work, stores
 messages and results, and resumes conversations when more input arrives. Agents
@@ -25,6 +40,7 @@ commands.
 
 ## Contents
 
+- [Why Hive](#why-hive)
 - [Quick start](#quick-start)
 - [Agents in your terminal](docs/terminal.md)
 - [Check configuration](#check-configuration)
@@ -91,6 +107,20 @@ counts, and unrelated agents can run. Resume and branching require restoring the
 capable build. Async sends retain their message IDs; calls and waits return `held`
 promptly. Restoring the capable build lets retained work continue. A new joined
 batch targeting a held agent is rejected atomically.
+
+## Why Hive
+
+- **Compared with several terminals or tmux panes:** each agent has an identity and a
+  mailbox. Agents message each other, the work survives restarts, and nothing depends on
+  a terminal staying open.
+- **Compared with a provider's own subagents:** those live and end inside one turn of one
+  conversation. Hive agents persist, can come from either provider, and a person can
+  follow and message any of them.
+- **Reviews as a first-class step:** send one change to several reviewers at once and get
+  their findings back as a single result, with Codex implementing and Claude reviewing, or
+  the reverse.
+- **Several subscriptions as one pool:** agents spread across your logins, and pending work
+  moves when one login hits its limit.
 
 ## Quick start
 

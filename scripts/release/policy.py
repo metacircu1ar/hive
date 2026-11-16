@@ -131,6 +131,7 @@ def allowed_path(name):
     listed = name in ROOT_FILES | RELEASE_CORPUS | BINARY_FILES | ICONS | E2E_FILES | {
         "logo.png",
         "comb/logo.png",
+        "docs/demo.gif",
     } | PRODUCT_PYTHON | MOCKS | set(GUIDES) | set(EXAMPLES)
     if listed or name in {f"{package}/Cargo.toml" for package in PACKAGES}:
         return True

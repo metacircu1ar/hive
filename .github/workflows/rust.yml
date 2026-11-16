@@ -110,12 +110,14 @@ jobs:
           case '${{ matrix.variant.package }}' in
             hive-install|hive-setup-support) test_runner="$HIVE_TEST_RUNNER" ;;
           esac
-          "$test_runner" cargo test --release --locked -p ${{ matrix.variant.package }} ${{ matrix.variant.flags }} --no-fail-fast -- --skip service::tests::embeddings::deadlines::adaptive::
-      # These elapsed-time contracts include real filesystem publication.
-      - name: Adaptive embedding timing (two tests, serial)
+          "$test_runner" cargo test --release --locked -p ${{ matrix.variant.package }} ${{ matrix.variant.flags }} --no-fail-fast -- --skip service::tests::embeddings::deadlines::adaptive:: --skip index::graph::tests::coverage::a_hundred_thousand_page_projection_keeps_filtered_and_strict_traversal_complete
+      # Filesystem publication and the 100k graph must retain their deadlines
+      # without competing with other tests' native processes and disk writes.
+      - name: Comb deadline-sensitive checks (serial)
         if: matrix.variant.package == 'comb'
         run: |
           cargo test --release --locked -p comb ${{ matrix.variant.flags }} --lib service::tests::embeddings::deadlines::adaptive:: -- --test-threads=1
+          cargo test --release --locked -p comb ${{ matrix.variant.flags }} --lib index::graph::tests::coverage::a_hundred_thousand_page_projection_keeps_filtered_and_strict_traversal_complete -- --exact --test-threads=1
       - name: Preserve declared format fingerprints
         env:
           BASELINE: ${{ github.event.pull_request.base.sha || github.event.before }}

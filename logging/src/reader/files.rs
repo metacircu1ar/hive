@@ -1,4 +1,4 @@
-use super::{File, Path, invalid, io};
+use super::{Arc, File, Path, invalid, io};
 use rustix::fs::{Dir, Mode, OFlags, open, openat};
 use std::os::unix::fs::MetadataExt;
 
@@ -46,7 +46,7 @@ fn check(file: &File, directory: bool) -> io::Result<()> {
     Ok(())
 }
 pub(super) struct Segment {
-    pub file: File,
+    pub file: Arc<File>,
     pub identity: Identity,
     pub length: u64,
 }
@@ -65,7 +65,7 @@ pub(super) fn segments(directory: &File, name: &str) -> io::Result<Vec<Segment>>
             Ok(Segment {
                 identity: identity(&file)?,
                 length: file.metadata()?.len(),
-                file,
+                file: Arc::new(file),
             })
         })
         .collect::<io::Result<Vec<_>>>()?;

@@ -13,6 +13,7 @@ use std::{
     fs::File,
     io::{self, Read, Seek, SeekFrom},
     path::{Path, PathBuf},
+    sync::Arc,
 };
 pub use view::View;
 
@@ -25,6 +26,8 @@ const RECORD_BYTES: usize = 8192;
 pub struct Cursor {
     identity: Identity,
     offset: u64,
+    // Keep an unlinked segment's inode alive so it cannot identify a newer file.
+    _file: Arc<File>,
 }
 
 #[derive(Default)]
@@ -95,10 +98,10 @@ impl Reader {
         if !(1..=MAX_TAIL).contains(&count) {
             return Err(invalid("Log tail must be 1..2000 records"));
         }
-        let mut files = self.files()?;
+        let files = self.files()?;
         let mut remaining = PAGE_BYTES;
         let mut page = Page::default();
-        for segment in files.iter_mut().rev() {
+        for segment in files.iter().rev() {
             let start = segment.length.saturating_sub(remaining);
             let mut piece = read(
                 segment,
@@ -133,7 +136,7 @@ impl Reader {
         Ok(page)
     }
     pub fn after(&self, cursor: Option<&Cursor>, filter: &Filter) -> io::Result<Page> {
-        let mut files = self.files()?;
+        let files = self.files()?;
         let position = cursor.and_then(|c| files.iter().position(|f| f.identity == c.identity));
         let mut page = Page {
             warnings: Warnings {
@@ -144,7 +147,7 @@ impl Reader {
             ..Page::default()
         };
         let mut remaining = PAGE_BYTES;
-        for segment in files.iter_mut().skip(position.unwrap_or(0)) {
+        for segment in files.iter().skip(position.unwrap_or(0)) {
             let start = cursor
                 .filter(|c| c.identity == segment.identity)
                 .map_or(0, |c| c.offset);
@@ -208,19 +211,18 @@ struct Window {
     end: u64,
 }
 
-fn read_window(segment: &mut Segment, start: u64, budget: u64) -> io::Result<Window> {
+fn read_window(segment: &Segment, start: u64, budget: u64) -> io::Result<Window> {
     let end = segment.length.min(start.saturating_add(budget));
-    segment.file.seek(SeekFrom::Start(start))?;
+    let mut file = &*segment.file;
+    file.seek(SeekFrom::Start(start))?;
     let mut bytes = Vec::new();
-    (&mut segment.file)
-        .take(end - start)
-        .read_to_end(&mut bytes)?;
+    file.take(end - start).read_to_end(&mut bytes)?;
     let mut begin = 0;
     // A tail may begin within a record; follow offsets always follow a newline.
     if start > 0 {
-        segment.file.seek(SeekFrom::Start(start - 1))?;
+        file.seek(SeekFrom::Start(start - 1))?;
         let mut previous = [0];
-        segment.file.read_exact(&mut previous)?;
+        file.read_exact(&mut previous)?;
         if previous != *b"\n" {
             begin = bytes
                 .iter()
@@ -238,7 +240,7 @@ struct ReadRequest<'a> {
     limit: usize,
     tail: bool,
 }
-fn read(segment: &mut Segment, request: ReadRequest<'_>) -> io::Result<Page> {
+fn read(segment: &Segment, request: ReadRequest<'_>) -> io::Result<Page> {
     let ReadRequest {
         start,
         budget,
@@ -260,6 +262,7 @@ fn read(segment: &mut Segment, request: ReadRequest<'_>) -> io::Result<Page> {
         cursor: Some(Cursor {
             identity: segment.identity,
             offset: start + crate::byte_count(begin) + crate::byte_count(complete),
+            _file: Arc::clone(&segment.file),
         }),
         ..Page::default()
     };
